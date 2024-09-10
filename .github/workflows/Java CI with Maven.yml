@@ -3,7 +3,7 @@ name: Java CI with Maven
 on:
   push:
     branches:
-      - develop
+      - develop # setear rama principal a proteger
   pull_request:
     branches:
       - develop

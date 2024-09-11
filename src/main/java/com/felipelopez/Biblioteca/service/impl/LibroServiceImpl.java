@@ -5,7 +5,6 @@ import com.felipelopez.Biblioteca.exception.ResourceNotFoundException;
 import com.felipelopez.Biblioteca.model.entity.Libro;
 import com.felipelopez.Biblioteca.repository.ILibroRepository;
 import com.felipelopez.Biblioteca.service.ILibroService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,8 +39,8 @@ public class LibroServiceImpl implements ILibroService {
     @Transactional
     @Override
     public Libro crearLibro(Libro libro) {
-        if(libro.getTituloLibro().equals("") || libro.getTituloLibro() == null){
-            throw new ResourceNotFoundException("El titulo del libro no puede estar vacio");
+        if(libro.getTituloLibro().equals("") || libro.getTituloLibro() == null) {
+            throw new BadRequestException("El titulo del libro no puede estar vacio");
         }
         return iLibroRepository.save(libro);
     }

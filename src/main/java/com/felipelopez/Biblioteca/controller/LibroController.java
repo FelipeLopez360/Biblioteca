@@ -23,17 +23,17 @@ public class LibroController {
         return new ResponseEntity<>(libros, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Libro> obtenerLibrosPorId(@PathVariable Long idLibro) {
-        try {
-            Libro libro = iLibroService.obtenerLibroPorId(idLibro);
-            return new ResponseEntity<>(libro, HttpStatus.OK);
-        } catch (ResourceNotFoundException ex) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } catch (Exception ex) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+@GetMapping("/{id}")
+public ResponseEntity<Libro> obtenerLibrosPorId(@PathVariable("id") Long idLibro) {
+    try {
+        Libro libro = iLibroService.obtenerLibroPorId(idLibro);
+        return new ResponseEntity<>(libro, HttpStatus.OK);
+    } catch (ResourceNotFoundException ex) {
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    } catch (Exception ex) {
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
+}
 
     @PostMapping
     public ResponseEntity<Libro> crearLibro(@RequestBody Libro libro) {
@@ -41,21 +41,21 @@ public class LibroController {
         return new ResponseEntity<>(nuevoLibro, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Libro> actualizarLibro(@PathVariable Long idLibro, @RequestBody Libro libro) {
-        try {
-            Libro libroExistente = iLibroService.obtenerLibroPorId(idLibro);
-        }catch (ResourceNotFoundException ex) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }catch (Exception ex) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+@PutMapping("/{id}")
+public ResponseEntity<Libro> actualizarLibro(@PathVariable("id") Long idLibro, @RequestBody Libro libro) {
+    try {
+        Libro libroExistente = iLibroService.obtenerLibroPorId(idLibro);
         Libro libroActualizado = iLibroService.actualizarLibro(idLibro, libro);
         return new ResponseEntity<>(libroActualizado, HttpStatus.OK);
+    } catch (ResourceNotFoundException ex) {
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    } catch (Exception ex) {
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
+}
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarLibro(@PathVariable Long idLibro) {
+    public ResponseEntity<Void> eliminarLibro(@PathVariable("id") Long idLibro) {
         iLibroService.eliminarLibro(idLibro);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

@@ -20,7 +20,15 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '17'
-          distribution: 'temurin'  # Actualizado a 'temurin'
+          distribution: 'temurin'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
 
       - name: Build with Maven
         run: mvn clean install
+
+      - name: Run tests
+        run: mvn test

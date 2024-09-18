@@ -1,8 +1,23 @@
 package com.felipelopez.Biblioteca.entity;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "fecha_publicacion")
 public class FechaPublicacion {
 
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         public Long idFechaPublicacion;
 
-        public String fechaPublicacion;
+        @Column(name = "fecha_publicacion", nullable = false)
+        public LocalDate fechaPublicacion;
 }

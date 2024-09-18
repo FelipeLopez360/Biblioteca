@@ -9,13 +9,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "autor")
-public class Autor {
+@Table(name = "libro")
+public class Libro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long idAutor;
+    public Long idLibro;
 
-    @Column(name = "nombre_autor", nullable = false)
-    public String nombreAutor;
+    @Column(name = "titulo_libro", nullable = false)
+    public String tituloLibro;
 }

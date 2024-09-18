@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: Java with Maven
 
 on:
   push:
@@ -12,7 +12,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout code
     - uses: actions/checkout@v4
+
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:

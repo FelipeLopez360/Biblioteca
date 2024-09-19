@@ -1,12 +1,13 @@
 package com.felipelopez.Biblioteca.service;
 
+import com.felipelopez.Biblioteca.model.dto.LibroResponseDTO;
 import com.felipelopez.Biblioteca.model.entity.Libro;
 
 import java.util.List;
 
 public interface ILibroService {
 
-    public List<Libro> obtenerTodosLosLibros();
+    public List<LibroResponseDTO> obtenerTodosLosLibros();
 
     public Libro crearLibro(Libro libro);
 

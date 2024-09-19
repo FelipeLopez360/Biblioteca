@@ -1,5 +1,7 @@
 package com.felipelopez.Biblioteca.service.impl;
 
+import com.felipelopez.Biblioteca.mapper.LibroMapper;
+import com.felipelopez.Biblioteca.model.dto.LibroResponseDTO;
 import com.felipelopez.Biblioteca.model.entity.Libro;
 import com.felipelopez.Biblioteca.exception.BadRequestException;
 import com.felipelopez.Biblioteca.exception.ResourceNotFoundException;
@@ -18,15 +20,17 @@ public class LibroServiceImpl implements ILibroService {
     private static final String LIBRO_NO_ENCONTRADO_MSG = "Libro no encontrado con el id: ";
 
     private final ILibroRepository iLibroRepository;
+    private final LibroMapper libroMapper;
 
 
     @Transactional(readOnly = true)
     @Override
-    public List<Libro> obtenerTodosLosLibros() {
-        if(iLibroRepository.findAll().isEmpty()){
+    public List<LibroResponseDTO> obtenerTodosLosLibros() {
+        List<Libro> libros = iLibroRepository.findAll();
+        if (libros.isEmpty()) {
             throw new ResourceNotFoundException("No hay libros en la base de datos");
         }
-        return iLibroRepository.findAll();
+        return libroMapper.convertToListDTO(libros);
     }
 
     @Transactional(readOnly = true)

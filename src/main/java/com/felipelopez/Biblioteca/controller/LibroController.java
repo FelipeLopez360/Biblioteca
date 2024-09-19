@@ -1,15 +1,13 @@
 package com.felipelopez.Biblioteca.controller;
 
 import com.felipelopez.Biblioteca.exception.ResourceNotFoundException;
+import com.felipelopez.Biblioteca.model.dto.LibroRequestDTO;
 import com.felipelopez.Biblioteca.model.dto.LibroResponseDTO;
 import com.felipelopez.Biblioteca.service.ILibroService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,5 +34,10 @@ public class LibroController {
         } catch (Exception ex) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+    @PostMapping
+    public ResponseEntity<LibroResponseDTO> crearLibro(@RequestBody LibroRequestDTO libroRequestDTO) {
+        LibroResponseDTO crearLibro = iLibroService.crearLibro(libroRequestDTO);
+        return new ResponseEntity<>(crearLibro, HttpStatus.CREATED);
     }
 }

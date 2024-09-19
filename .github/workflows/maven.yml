@@ -23,6 +23,4 @@ jobs:
           cache: maven
 
       - name: Build with Maven
-        run: mvn clean install -e -X
-          #env:
-          #SPRING_PROFILES_ACTIVE: h2
+        run: mvn clean install

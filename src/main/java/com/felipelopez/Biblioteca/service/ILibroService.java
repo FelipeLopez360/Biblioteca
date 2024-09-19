@@ -11,7 +11,7 @@ public interface ILibroService {
 
     public Libro crearLibro(Libro libro);
 
-    public Libro obtenerLibroPorId(Long idLibro);
+    public LibroResponseDTO obtenerLibroPorId(Long idLibro);
 
     void eliminarLibro(Long idLibro);
 

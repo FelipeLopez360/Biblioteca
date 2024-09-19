@@ -35,9 +35,10 @@ public class LibroServiceImpl implements ILibroService {
 
     @Transactional(readOnly = true)
     @Override
-    public Libro obtenerLibroPorId(Long idLibro) {
-        return iLibroRepository.findById(idLibro)
+    public LibroResponseDTO obtenerLibroPorId(Long idLibro) {
+        Libro libro = iLibroRepository.findById(idLibro)
                 .orElseThrow(() -> new ResourceNotFoundException(LIBRO_NO_ENCONTRADO_MSG + idLibro));
+        return libroMapper.convertToDTO(libro);
     }
 
     @Transactional

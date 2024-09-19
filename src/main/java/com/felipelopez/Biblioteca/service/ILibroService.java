@@ -1,6 +1,6 @@
 package com.felipelopez.Biblioteca.service;
 
-import com.felipelopez.Biblioteca.entity.Libro;
+import com.felipelopez.Biblioteca.model.entity.Libro;
 
 import java.util.List;
 

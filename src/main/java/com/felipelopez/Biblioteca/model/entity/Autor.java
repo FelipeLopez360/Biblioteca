@@ -1,4 +1,4 @@
-package com.felipelopez.Biblioteca.entity;
+package com.felipelopez.Biblioteca.model.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

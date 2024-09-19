@@ -1,6 +1,6 @@
 package com.felipelopez.Biblioteca.service.impl;
 
-import com.felipelopez.Biblioteca.entity.Libro;
+import com.felipelopez.Biblioteca.model.entity.Libro;
 import com.felipelopez.Biblioteca.exception.BadRequestException;
 import com.felipelopez.Biblioteca.exception.ResourceNotFoundException;
 import com.felipelopez.Biblioteca.repository.ILibroRepository;

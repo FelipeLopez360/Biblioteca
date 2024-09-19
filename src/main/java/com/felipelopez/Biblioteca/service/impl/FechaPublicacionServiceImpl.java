@@ -45,7 +45,7 @@ public class FechaPublicacionServiceImpl implements IFechaPublicacionService {
     public FechaPublicacion actualizarFechaPublicacion(Long idFechaPublicacion, FechaPublicacion fechaPublicacionActualizada) {
         FechaPublicacion fechaPublicacion = iFechaPublicacionRepository.findById(idFechaPublicacion)
                 .orElseThrow(()-> new ResourceNotFoundException(FECHA_PUBLICACION_NO_ENCONTRADA_MSG));
-        fechaPublicacionActualizada.setFechaPublicacion(fechaPublicacionActualizada.getFechaPublicacion());
+        fechaPublicacionActualizada.setFecha(fechaPublicacionActualizada.getFecha());
         return iFechaPublicacionRepository.save(fechaPublicacion);
     }
 

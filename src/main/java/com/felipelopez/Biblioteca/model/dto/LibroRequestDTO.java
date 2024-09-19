@@ -9,9 +9,9 @@ import java.time.LocalDate;
 public class LibroRequestDTO {
 
     @NotBlank(message = "El nombre del Libro no puede estar vacio")
-    private String libro;
+    private String tituloLibro;
     @NotBlank(message = "El nombre del Autor no puede estar vacio")
-    private String autor;
+    private String nombreAutor;
     @NotBlank(message = "La Fecha no puede estar vacia")
     private LocalDate fechaPublicacion;
 }

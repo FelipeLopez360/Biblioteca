@@ -19,5 +19,5 @@ public class FechaPublicacion {
         public Long idFechaPublicacion;
 
         @Column(name = "fecha_publicacion", nullable = false)
-        public LocalDate fechaPublicacion;
+        public LocalDate fecha;
 }

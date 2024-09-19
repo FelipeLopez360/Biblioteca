@@ -1,5 +1,6 @@
 package com.felipelopez.Biblioteca.service;
 
+import com.felipelopez.Biblioteca.model.dto.LibroRequestDTO;
 import com.felipelopez.Biblioteca.model.dto.LibroResponseDTO;
 import com.felipelopez.Biblioteca.model.entity.Libro;
 
@@ -9,7 +10,7 @@ public interface ILibroService {
 
     public List<LibroResponseDTO> obtenerTodosLosLibros();
 
-    public Libro crearLibro(Libro libro);
+    public LibroResponseDTO crearLibro(LibroRequestDTO libroRequestDTO);
 
     public LibroResponseDTO obtenerLibroPorId(Long idLibro);
 

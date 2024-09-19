@@ -18,4 +18,12 @@ public class Libro {
 
     @Column(name = "titulo_libro", nullable = false)
     public String tituloLibro;
+
+    @ManyToOne
+    @JoinColumn(name = "autor_id", nullable = false)
+    private Autor autor;
+
+    @ManyToOne
+    @JoinColumn(name = "fecha_publicacion_id", nullable = false)
+    private FechaPublicacion fechaPublicacion;
 }

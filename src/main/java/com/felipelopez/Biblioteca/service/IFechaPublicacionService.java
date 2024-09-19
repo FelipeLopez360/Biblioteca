@@ -1,6 +1,6 @@
 package com.felipelopez.Biblioteca.service;
 
-import com.felipelopez.Biblioteca.entity.FechaPublicacion;
+import com.felipelopez.Biblioteca.model.entity.FechaPublicacion;
 
 import java.util.List;
 

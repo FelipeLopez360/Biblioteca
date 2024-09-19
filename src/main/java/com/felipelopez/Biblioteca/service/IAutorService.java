@@ -1,6 +1,6 @@
 package com.felipelopez.Biblioteca.service;
 
-import com.felipelopez.Biblioteca.entity.Autor;
+import com.felipelopez.Biblioteca.model.entity.Autor;
 
 import java.util.List;
 

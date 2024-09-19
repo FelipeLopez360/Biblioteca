@@ -1,7 +1,6 @@
 package com.felipelopez.Biblioteca.service.impl;
 
-import com.felipelopez.Biblioteca.entity.FechaPublicacion;
-import com.felipelopez.Biblioteca.exception.BadRequestException;
+import com.felipelopez.Biblioteca.model.entity.FechaPublicacion;
 import com.felipelopez.Biblioteca.exception.ResourceNotFoundException;
 import com.felipelopez.Biblioteca.repository.IFechaPublicacionRepository;
 import com.felipelopez.Biblioteca.service.IFechaPublicacionService;

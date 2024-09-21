@@ -16,6 +16,6 @@ public interface ILibroService {
 
     void eliminarLibro(Long idLibro);
 
-    public Libro actualizarLibro(Long idLibro, Libro libroActualizado);
+    public LibroResponseDTO actualizarLibro(Long idLibro, LibroRequestDTO libroRequestDTO);
 
 }

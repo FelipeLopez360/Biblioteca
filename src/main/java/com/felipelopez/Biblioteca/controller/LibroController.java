@@ -40,4 +40,10 @@ public class LibroController {
         LibroResponseDTO crearLibro = iLibroService.crearLibro(libroRequestDTO);
         return new ResponseEntity<>(crearLibro, HttpStatus.CREATED);
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<LibroResponseDTO> actualizarLibro(@PathVariable Long id, @RequestBody LibroRequestDTO libroRequestDTO) {
+        LibroResponseDTO actualizarLibro = iLibroService.actualizarLibro(id, libroRequestDTO);
+        return new ResponseEntity<>(actualizarLibro, HttpStatus.OK);
+    }
+
 }

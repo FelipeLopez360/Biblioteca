@@ -80,14 +80,34 @@ public class LibroServiceImpl implements ILibroService {
 
     @Transactional
     @Override
-    public Libro actualizarLibro(Long id, Libro libroActualizado) {
-        if (libroActualizado.getTituloLibro().equals("") || libroActualizado.getTituloLibro() == null) {
+    public LibroResponseDTO actualizarLibro(Long idLibro, LibroRequestDTO libroRequestDTO) {
+        if (libroRequestDTO.getTituloLibro() == null  || libroRequestDTO.getTituloLibro().isEmpty()) {
             throw new BadRequestException("El titulo del libro no puede estar vacio");
         }
-        Libro libroExistente = iLibroRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(LIBRO_NO_ENCONTRADO_MSG  + id));
-        libroExistente.setTituloLibro(libroActualizado.getTituloLibro());
-        return iLibroRepository.save(libroExistente);
+        if (libroRequestDTO.getNombreAutor() == null || libroRequestDTO.getNombreAutor().isEmpty()) {
+            throw new BadRequestException("El nombre del autor no puede estar vacio");
+        }
+        if (libroRequestDTO.getFechaPublicacion() == null) {
+            throw new BadRequestException("La fecha de publicacion no puede estar vacia");
+        }
+
+        Libro libroExistente = iLibroRepository.findById(idLibro)
+                .orElseThrow(() -> new ResourceNotFoundException(LIBRO_NO_ENCONTRADO_MSG + idLibro));
+
+        Autor autor = new Autor();
+        autor.setNombreAutor(libroRequestDTO.getNombreAutor());
+        autor = iAutorRepository.save(autor);
+
+        FechaPublicacion fechaPublicacion = new FechaPublicacion();
+        fechaPublicacion.setFecha(libroRequestDTO.getFechaPublicacion());
+        fechaPublicacion = iFechaPublicacionRepository.save(fechaPublicacion);
+
+        libroExistente.setTituloLibro(libroRequestDTO.getTituloLibro());
+        libroExistente.setFechaPublicacion(fechaPublicacion);
+        libroExistente.setAutor(autor);
+
+        Libro libroActualizado = iLibroRepository.save(libroExistente);
+        return libroMapper.convertToDTO(libroActualizado);
     }
 
     @Transactional
